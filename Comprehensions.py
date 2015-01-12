@@ -12,7 +12,8 @@ def odd2(nums):
     return [n * n for n in nums[1::2] if n%2 == 0]
 
 def test(got, expected):
-    """Simple function, used in main() to print what each function returns vs. what it's supposed to return."""
+    """Simple function, used in main() to print what each
+	function returns vs. what it's supposed to return."""
     if got == expected:
         prefix = ' OK'
     else:
@@ -21,12 +22,9 @@ def test(got, expected):
 
 def main():
     """This is the test of squares() function"""
-    test (squares([1, -2, 3]),
-          [1, 4, 9])
-    test (odd([1, 4, 3, 5, 5, 2]),
-          [4, 5, 2])
-    test (odd2([1, 4, 3, 5, 5, 2]),
-          [16, 4])
+    test(squares([1, -2, 3]), [1, 4, 9])
+    test(odd([1, 4, 3, 5, 5, 2]), [4, 5, 2])
+    test(odd2([1, 4, 3, 5, 5, 2]), [16, 4])
 
 if __name__ == '__main__':
-  main()
+    main()
