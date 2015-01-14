@@ -1,30 +1,30 @@
 """This is the xrange() function realization"""
-def xrange_func(arg1, arg2=None, arg3=None):
+def xrange_func(start, stop=None, step=None):
     """This function yelds the values without actually storing them all simultaneously"""
-    i = arg1
-    if (arg1 != None) and (arg2 == None) and (arg3 == None): # Iterating in positive direction.
+    i = start
+    if (stop is None) and (step is None): # Iterating in positive direction.
         i = 0
-        while i < arg1:
+        while i < start:
             yield i
             i += 1
-    elif (arg1 != None) and (arg2 != None) and (arg3 == None): # Iterating in positive direction.
-        while i < arg2:
+    elif (stop is not None) and (step is None): # Iterating in positive direction.
+        while i < stop:
             yield i
             i += 1
-    elif (arg1 != None) and (arg2 != None) and (arg3 > 0): # Iterating in positive direction.
-        while i < arg2:
+    elif (stop is not None) and (step > 0): # Iterating in positive direction.
+        while i < stop:
             yield i
-            i += arg3
-    elif (arg1 != None) and (arg2 != None) and (arg3 < 0): # Iterating in negative direction.
-        while i > arg2:
+            i += step
+    elif (stop is not None) and (step < 0): # Iterating in negative direction.
+        while i > stop:
             yield i
-            i += arg3
+            i += step
 
-def create_list(arg1, arg2=None, arg3=None):
+def create_list(start, stop=None, step=None):
     """This function used to create an example list.
     This list will be used in main() function"""
     example_list = []
-    mygenerator = xrange_func(arg1, arg2, arg3) # Creating a generator
+    mygenerator = xrange_func(start, stop, step) # Creating a generator
     for item in mygenerator: # Generating an example list
         example_list.append(item)
     return example_list
