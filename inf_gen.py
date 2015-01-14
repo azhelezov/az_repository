@@ -3,4 +3,4 @@ def inf_iterator(value):
         yield value
 
 def inf_generator(value):
-    return cycle_gen(value).next()
+    return inf_iterator(value).next()
