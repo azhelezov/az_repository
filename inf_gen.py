@@ -1,6 +1,3 @@
-from itertools import cycle
-
-
 def inf_iterator(value):
     while True:
         yield value
