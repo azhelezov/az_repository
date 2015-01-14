@@ -1,3 +1,9 @@
-""" This code prints '1' infinitely """
-while 1:
-    print '1'
+from itertools import cycle
+
+
+def inf_iterator(value):
+    while True:
+        yield value
+
+def inf_generator(value):
+    return cycle_gen(value).next()
