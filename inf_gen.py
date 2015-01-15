@@ -1,6 +1,8 @@
+"""This is the realization of "infinite" generator that always gives
+out the same value"""
 def inf_iterator(value):
-    while True:
+    """This function creates an iterator"""
+    while True: # infinite cycle
         yield value
 
-def inf_generator(value):
-    return inf_iterator(value).next()
+print inf_iterator(1).next() # generating a value
