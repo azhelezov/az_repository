@@ -1,30 +1,29 @@
 """This functions are written to practice list comprehensions"""
-def squares(nums):
+import unittest
+
+
+def squares(inp_list):
     """This function returns squares of input list items"""
-    return [n * n for n in nums]
+    return [item * item for item in inp_list]
 
-def odd(nums):
+def odd_pos(inp_list):
     """This function returns each input list item, situated on odd position"""
-    return [n for n in nums[1::2]]
+    return [item for item in inp_list[1::2]]
 
-def odd2(nums):
+def square_evenitems_oddpos(inp_list):
     """This function returns square of each even input list item, situated on odd position"""
-    return [n * n for n in nums[1::2] if n%2 == 0]
+    return [item * item for item in inp_list[1::2] if item%2 == 0]
 
-def test(got, expected):
-    """Simple function, used in main() to print what each
-	function returns vs. what it's supposed to return."""
-    if got == expected:
-        prefix = ' OK'
-    else:
-        prefix = ' X'
-    print '%s got: %s expected: %s' % (prefix, repr(got), repr(expected))
-
-def main():
-    """This is the test of squares() function"""
-    test(squares([1, -2, 3]), [1, 4, 9])
-    test(odd([1, 4, 3, 5, 5, 2]), [4, 5, 2])
-    test(odd2([1, 4, 3, 5, 5, 2]), [16, 4])
+class XrangeTest(unittest.TestCase):
+    """This is the test of xrange_funcfunction"""
+    def test1(self):
+        """This function compares create_list function result with expected"""
+        self.assertEqual(squares([1, -2, 3]),
+                         [1, 4, 9])
+        self.assertEqual(odd_pos([1, 4, 3, 5, 5, 2]),
+                         [4, 5, 2])
+        self.assertEqual(square_evenitems_oddpos([1, 4, 3, 5, 5, 2]),
+                         [16, 4])
 
 if __name__ == '__main__':
-    main()
+    unittest.main()
