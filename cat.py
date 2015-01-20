@@ -4,9 +4,12 @@ import sys
 
 def cat():
     """ This function prints contents of text files """
-    args = sys.argv[1:] # reading all file names
-    for filename in args: # printing content of each file
-        fileopened = open(filename, 'r')
-        text = fileopened.read()
-        print text
+    for filename in sys.argv[1:]: 
+        try: # trying to read files
+            fileopened = open(filename, 'r')
+        except IOError: # printing a message in case of invalid file name
+            print 'cannot open file', filename
+        else:
+            print fileopened.read() # printing content of each file
+            fileopened.close()
 cat()
