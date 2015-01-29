@@ -93,6 +93,7 @@ def getFlightInformation(outboundAirportIata, returnAirportIata, outbondDate, re
                                                ']/div[1]/table/tbody/tr/td/table/tfoot/tr/td/text()')
             if FligftPriceList == []:
                 print 'There are no flights for your query'
+                break
             else:
                 print 'Flight number', flight
                 for flightVariant in range(len(FligftPriceList)):
