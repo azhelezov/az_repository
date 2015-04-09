@@ -9,6 +9,8 @@
     <body>
  
         <!-- IMPORTANT enctype attribute! -->
+		<strong>Hello, {{username}}!</strong>
+		<a href="{% url 'django.contrib.auth.views.logout' %}">
         <form class="dropzone" action="{% url "main:home" %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
         </form>
@@ -41,5 +43,29 @@
                 }
             };
         </script>
+		Log out</a>
+		    {% if filelist %}
+                <table border="1" colspan="2" width="100%">
+                    <tr>
+                        <th width="50%">File</td>
+                        <th width="25%">Download</td> 
+                        <th width="25%">Delete</td> 
+                    </tr>
+                {% for file in filelist %}
+                    <tr>
+                        <td width="50%">{{file.file.name}}</td>
+                        <td width="25%" align="center"><a href="{{file.file.url}}" style="text-decoration:None">Download here</a></td>
+                        <td width="25%" align="center"><form action="{% url 'delete' %}" method="post" enctype="multipart/form-data">
+						                               {% csrf_token %}
+													   <input type="hidden" name="file" value="{{ document.pk }}" />
+													   <input type="submit" value="Delete" />
+													   </form>
+						</td>
+                    </tr>
+                {% endfor %}
+		    {% else %}
+		        <p>No documents.</p>
+            {% endif %}		
+                </table>
     </body>
 </html>

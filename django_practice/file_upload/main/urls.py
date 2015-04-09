@@ -7,4 +7,5 @@ urlpatterns = patterns('',
 
 #    url(r'^admin/', include(admin.site.urls)),
     url(r'^$', 'main.views.home', name='home'),
+    url(r'^$', 'main.views.home', name='files_list'),
 )
